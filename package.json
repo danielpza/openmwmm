@@ -1,11 +1,11 @@
 {
-  "name": "openwmmm",
+  "name": "openmwmm",
   "version": "0.1.0",
   "files": [
     "lib"
   ],
   "bin": {
-    "openwmmm": "lib/index.js"
+    "openmwmm": "lib/index.js"
   },
   "main": "lib/index.js",
   "scripts": {
@@ -32,11 +32,11 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/danielpza/openwmmm-js.git"
+    "url": "git+https://github.com/danielpza/openmwmm-js.git"
   },
   "bugs": {
-    "url": "https://github.com/danielpza/openwmmm-js/issues"
+    "url": "https://github.com/danielpza/openmwmm-js/issues"
   },
-  "homepage": "https://github.com/danielpza/openwmmm-js#readme",
+  "homepage": "https://github.com/danielpza/openmwmm-js#readme",
   "description": ""
 }

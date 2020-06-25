@@ -1,4 +1,4 @@
-# openwmmm
+# openmwmm
 
 OpenMW Mod Manager CLI. It just reads/writes mod entries to your openmw.cfg file
 
@@ -10,23 +10,23 @@ OpenMW Mod Manager CLI. It just reads/writes mod entries to your openmw.cfg file
 ## Installation
 
 ```sh
-git clone https://github.com/danielpza/openwmmm-js
-cd openwmmm-js
+git clone https://github.com/danielpza/openmwmm-js
+cd openmwmm-js
 npm link
 ```
 
 ## Usage
 
 ```
-$ openwmmm --help
-openwmmm
+$ openmwmm --help
+openmwmm
 
 list enabled/disabled mods
 
 Commands:
-  openwmmm list             list enabled/disabled mods                 [default]
-  openwmmm add <folder>     add mod
-  openwmmm remove <folder>  remove mod
+  openmwmm list             list enabled/disabled mods                 [default]
+  openmwmm add <folder>     add mod
+  openmwmm remove <folder>  remove mod
 
 Options:
   --version  Show version number                                       [boolean]
