@@ -2,9 +2,9 @@
 import { readFileSync, writeFileSync } from "fs";
 import { resolve } from "path";
 import yargs from "yargs";
-import { xdg } from "./xdg";
+import { baseDirs } from "directories";
 
-const CONFIG_FILE = resolve(xdg.config, "openmw/openmw.cfg");
+const CONFIG_FILE = resolve(baseDirs.config()!, "openmw/openmw.cfg");
 
 function appendFile(file: string, content: string) {
   const prev = readFileSync(file).toString();

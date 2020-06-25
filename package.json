@@ -18,6 +18,7 @@
   "author": "Daniel Perez Alvarez <danielpza@protonmail.com> (https://github.com/danielpza)",
   "license": "MIT",
   "dependencies": {
+    "directories": "git+https://github.com/danielpza/directories-js.git",
     "mkdirp": "^1.0.4",
     "yargs": "^15.3.1"
   },
