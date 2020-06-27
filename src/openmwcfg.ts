@@ -1,6 +1,6 @@
+import { baseDirs } from "directories";
 import { readFileSync, writeFileSync } from "fs";
 import { resolve } from "path";
-import { baseDirs } from "directories";
 
 const CONFIG_FILE = resolve(baseDirs.config()!, "openmw/openmw.cfg");
 
@@ -18,22 +18,37 @@ export function getDataEntries() {
     .filter((str) => !str.match(/Morrowind\/Data Files$/)); // remove main file from entries
 }
 
-export function addMod(location: string) {
-  const entry = `data="${location}"`;
-  appendFile(CONFIG_FILE, "\n" + entry);
-  console.log(`Entry "${location}" added successfully`);
+export function addMods(mods: string[]) {
+  const result = mods.map((location) => `data="${location}"`).join("\n");
+  appendFile(CONFIG_FILE, "\n" + result);
+  console.log("Entries added correctly");
 }
 
-export function removeMod(location: string) {
-  const entry = `data="${location}"`;
+export function removeMods(mods: string[]) {
   const content = readFileSync(CONFIG_FILE).toString();
-  const lines = content.split("\n");
-  const filtered = lines.filter((str) => str !== entry);
-  const result = filtered.join("\n");
-  if (filtered.length < lines.length) {
-    writeFileSync(CONFIG_FILE, result);
-    console.log(`Entry "${location}" removed successfully`);
-  } else {
-    console.log(`Entry "${location}" not found`);
-  }
+  const entries = mods.map((location) => `data="${location}"`);
+  const entriesSet = new Set(entries);
+  const result = content
+    .split("\n")
+    .filter((line) => {
+      if (entriesSet.has(line)) {
+        entriesSet.delete(line);
+        return false;
+      }
+      return true;
+    })
+    .join("\n");
+  writeFileSync(CONFIG_FILE, result);
+  entries.forEach((mod) => {
+    if (entriesSet.has(mod)) {
+      console.log(`Entry ${mod} not found`);
+    } else {
+      console.log(`Entry ${mod} removed`);
+    }
+  });
+}
+
+export function removeAll() {
+  const all = getDataEntries();
+  removeMods(all);
 }

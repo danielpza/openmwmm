@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 import { resolve } from "path";
 import yargs from "yargs";
-import { addMod, getDataEntries, removeMod } from "./openmwcfg";
+import { addMods, getDataEntries, removeAll, removeMods } from "./openmwcfg";
 
 try {
   (yargs as any)
@@ -9,17 +9,25 @@ try {
       const entries = getDataEntries();
       console.log(entries.join("\n"));
     })
-    .command("add <folder>", "add mod", {}, (args: { folder: string }) => {
-      addMod(resolve(args.folder));
-    })
     .command(
-      "remove <folder>",
-      "remove mod",
+      "add <folders..>",
+      "add mods",
       {},
-      (args: { folder: string }) => {
-        removeMod(resolve(args.folder));
+      (args: { folders: string[] }) => {
+        addMods(args.folders.map((p) => resolve(p)));
       }
     )
+    .command(
+      "remove <folders..>",
+      "remove mods",
+      {},
+      (args: { folders: string[] }) => {
+        removeMods(args.folders.map((p) => resolve(p)));
+      }
+    )
+    .command("remove-all", "remove all mods", {}, () => {
+      removeAll();
+    })
     .help().argv;
 } catch (err) {
   console.error(err);
