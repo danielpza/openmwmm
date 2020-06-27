@@ -5,7 +5,7 @@ import { addMods, getDataEntries, removeAll, removeMods } from "./openmwcfg";
 
 try {
   (yargs as any)
-    .command("list", "list enabled/disabled mods", {}, () => {
+    .command("list", "list mods", {}, () => {
       const entries = getDataEntries();
       console.log(entries.join("\n"));
     })
