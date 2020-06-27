@@ -5,9 +5,8 @@
     "lib"
   ],
   "bin": {
-    "openmwmm": "lib/index.js"
+    "openmwmm": "lib/cli.js"
   },
-  "main": "lib/index.js",
   "scripts": {
     "prepare": "npm run build",
     "prebuild": "rm -rf lib",
